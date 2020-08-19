@@ -24,9 +24,12 @@ export const getStaticProps = async ({ params: { slug } }) => {
 
 export const getStaticPaths = async () => {
   const posts = await fetchNotionPosts();
+  const paths = posts.map((post) => ({
+    params: { slug: post.slug },
+  }))
   return {
-    paths: posts.map((row) => `/${row.slug}`),
-    fallback: true,
+    paths,
+    fallback: false,
   }
 }
 
