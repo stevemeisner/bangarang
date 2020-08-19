@@ -50,3 +50,9 @@
 .lightText {
   color: #666;
 }
+
+
+/* types */
+.singlePost {
+  font-size: 1.2em;
+}

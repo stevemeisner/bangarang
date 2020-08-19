@@ -1,5 +1,6 @@
 import { fetchNotionPosts } from '../lib/posts'
 import Head from 'next/head'
+import IndexPost from '../components/index-post'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 
@@ -10,7 +11,7 @@ export async function getStaticProps() {
     props: {
       allPostsData
     },
-    revalidate: 3
+    revalidate: 1
   }
 }
 
@@ -26,15 +27,7 @@ export default function Home({ allPostsData }) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              {title}
-              <br />
-              {id}
-              <br />
-              {date}
-            </li>
-          ))}
+          {allPostsData.map(post => <IndexPost key={post.id} post={post} />)}
         </ul>
       </section>
     </Layout>
