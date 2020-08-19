@@ -3,7 +3,7 @@ import utilStyles from '../styles/utils.module.css'
 
 
 export default function IndexPost({post}) {
-  const { id, date, title, draft, slug, tags } = post;
+  const { id, date, title, draft, slug, tags } = post
 
   if (!draft) {
     return (

@@ -1,5 +1,5 @@
 import Layout from '../components/layout'
-import { NotionRenderer } from "react-notion";
+import { NotionRenderer } from "react-notion"
 import { fetchNotionPosts, fetchNotionPost } from '../lib/posts'
 import utilStyles from '../styles/utils.module.css'
 
@@ -19,7 +19,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
      blocks,
      title,
     },
-  };
+  }
 }
 
 export const getStaticPaths = async () => {
@@ -27,7 +27,7 @@ export const getStaticPaths = async () => {
   return {
     paths: posts.map((row) => `/${row.slug}`),
     fallback: true,
-  };
+  }
 }
 
 const Post = ({ title, blocks }) => (
@@ -37,6 +37,6 @@ const Post = ({ title, blocks }) => (
       <NotionRenderer blockMap={blocks} />
     </div>
   </Layout>
-);
+)
 
 export default Post;
