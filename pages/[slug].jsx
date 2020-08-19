@@ -5,18 +5,19 @@ import utilStyles from '../styles/utils.module.css'
 
 export const getStaticProps = async ({ params: { slug } }) => {
   // Get all posts again
-  const posts = await fetchNotionPosts();
+  const posts = await fetchNotionPosts()
 
   // Find the current blogpost by slug
-  const post = await posts.find((t) => t.slug === slug);
+  const post = posts.find((t) => t.slug === slug)
 
   // get the notion content blocks from the post
-  const blocks = await fetchNotionPost(post.id);
+  const blocks = await fetchNotionPost(post.id)
+  const title = post.title
   
   return {
     props: {
      blocks,
-     post,
+     title,
     },
   };
 }
@@ -29,10 +30,10 @@ export const getStaticPaths = async () => {
   };
 }
 
-const Post = ({ post, blocks }) => (
+const Post = ({ title, blocks }) => (
   <Layout>
     <div className={utilStyles.singlePost}>
-      <h1>{post.title}</h1>
+      <h1>{title}</h1>
       <NotionRenderer blockMap={blocks} />
     </div>
   </Layout>
