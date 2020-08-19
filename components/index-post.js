@@ -8,7 +8,7 @@ export default function IndexPost({post}) {
   if (!draft) {
     return (
       <li className={utilStyles.listItem} key={id}>
-        <Link href="/[slug]" as={`/${slug}`}>{title}</Link>
+        <Link href="/[slug]" as={`/${slug}`}><a title={title}>{title}</a></Link>
         <br />
         {id}
         <br />

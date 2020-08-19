@@ -1,15 +1,16 @@
-import Layout, { siteTitle } from '../components/layout'
+import Layout from '../components/layout'
 import { NotionRenderer } from "react-notion";
 import { fetchNotionPosts, fetchNotionPost } from '../lib/posts'
 import utilStyles from '../styles/utils.module.css'
 
-export async function getStaticProps({ params: { slug } }) {
+export const getStaticProps = async ({ params: { slug } }) => {
   // Get all posts again
   const posts = await fetchNotionPosts();
 
   // Find the current blogpost by slug
-  const post = posts.find((t) => t.slug === slug);
+  const post = await posts.find((t) => t.slug === slug);
 
+  // get the notion content blocks from the post
   const blocks = await fetchNotionPost(post.id);
   
   return {
@@ -20,7 +21,7 @@ export async function getStaticProps({ params: { slug } }) {
   };
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const posts = await fetchNotionPosts();
   return {
     paths: posts.map((row) => `/${row.slug}`),
@@ -28,7 +29,7 @@ export async function getStaticPaths() {
   };
 }
 
-export default ({ post, blocks }) => (
+const Post = ({ post, blocks }) => (
   <Layout>
     <div className={utilStyles.singlePost}>
       <h1>{post.title}</h1>
@@ -36,3 +37,5 @@ export default ({ post, blocks }) => (
     </div>
   </Layout>
 );
+
+export default Post;
