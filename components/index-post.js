@@ -1,7 +1,6 @@
 import Link from "next/link";
 import utilStyles from '../styles/utils.module.css'
 
-
 export default function IndexPost({post}) {
   const { id, date, title, draft, slug, tags } = post
 
