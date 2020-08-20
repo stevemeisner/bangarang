@@ -34,13 +34,19 @@ export const getStaticPaths = async () => {
   }
 }
 
-const Post = ({ title, blocks }) => (
-  <Layout>
-    <div className={utilStyles.singlePost}>
-      <h1>{title}</h1>
-      <NotionRenderer blockMap={blocks} />
-    </div>
-  </Layout>
-)
+const Post = ({ title, blocks }) => {
+  return (
+    <Layout>
+      <div className={utilStyles.singlePost}>
+        {!title || !blocks ? (
+          <h1>{title}</h1>
+          <NotionRenderer blockMap={blocks} />
+        ) :
+          <div>Dis is broken</div>
+        }
+      </div>
+    </Layout>
+  )
+}
 
 export default Post;
