@@ -4,13 +4,25 @@ import IndexPost from '../components/index-post'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   let allPostsData = await fetchNotionPosts()
 
   return {
     props: {
       allPostsData
-    }
+    },
+    revalidate: 1
+  }
+}
+
+export const getStaticPaths = async () => {
+  const posts = await fetchNotionPosts();
+  const paths = posts.map((post) => ({
+    params: { slug: post.slug },
+  }))
+  return {
+    paths,
+    fallback: true,
   }
 }
 
