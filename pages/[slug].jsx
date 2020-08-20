@@ -18,8 +18,7 @@ export const getServerSideProps = async ({ params: { slug } }) => {
     props: {
      blocks,
      title,
-    },
-    revalidate: 1
+    }
   }
 }
 
