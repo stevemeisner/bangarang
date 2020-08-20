@@ -39,8 +39,10 @@ const Post = ({ title, blocks }) => {
     <Layout>
       <div className={utilStyles.singlePost}>
         {!title || !blocks ? (
-          <h1>{title}</h1>
-          <NotionRenderer blockMap={blocks} />
+          <>
+            <h1>{title}</h1>
+            <NotionRenderer blockMap={blocks} />
+          </>
         ) :
           <div>Dis is broken</div>
         }
