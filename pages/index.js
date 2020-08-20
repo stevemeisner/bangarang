@@ -15,17 +15,6 @@ export async function getStaticProps() {
   }
 }
 
-export const getStaticPaths = async () => {
-  const posts = await fetchNotionPosts();
-  const paths = posts.map((post) => ({
-    params: { slug: post.slug },
-  }))
-  return {
-    paths,
-    fallback: true,
-  }
-}
-
 export default function Home({ allPostsData }) {
   return (
     <Layout home>
