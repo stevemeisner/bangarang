@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "next": "9.5.2",
+    "next-compose-plugins": "^2.2.0",
+    "next-img": "^0.3.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-notion": "^0.7.3"

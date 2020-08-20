@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import { Picture } from 'next-img'
+import avatar from './images/profile.jpg?sizes=108,144'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
@@ -27,8 +29,8 @@ export default function Layout({ children, home }) {
       <header className={styles.header}>
         {home ? (
           <>
-            <img
-              src="/images/profile.jpg"
+            <Picture
+              src={avatar}
               className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
               alt={name}
             />
@@ -38,8 +40,8 @@ export default function Layout({ children, home }) {
           <>
             <Link href="/">
               <a>
-                <img
-                  src="/images/profile.jpg"
+                <Picture
+                  src={avatar}
                   className={`${styles.headerImage} ${utilStyles.borderCircle}`}
                   alt={name}
                 />
