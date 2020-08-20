@@ -3,7 +3,7 @@ import { NotionRenderer } from "react-notion"
 import { fetchNotionPosts, fetchNotionPost } from '../lib/posts'
 import utilStyles from '../styles/utils.module.css'
 
-export const getStaticProps = async ({ params: { slug } }) => {
+export const getServerSideProps = async ({ params: { slug } }) => {
   // Get all posts again
   const posts = await fetchNotionPosts()
 
@@ -23,16 +23,16 @@ export const getStaticProps = async ({ params: { slug } }) => {
   }
 }
 
-export const getStaticPaths = async () => {
-  const posts = await fetchNotionPosts();
-  const paths = posts.map((post) => ({
-    params: { slug: post.slug },
-  }))
-  return {
-    paths,
-    fallback: true,
-  }
-}
+// export const getStaticPaths = async () => {
+//   const posts = await fetchNotionPosts();
+//   const paths = posts.map((post) => ({
+//     params: { slug: post.slug },
+//   }))
+//   return {
+//     paths,
+//     fallback: true,
+//   }
+// }
 
 const Post = ({ title, blocks }) => {
   return (
