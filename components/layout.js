@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { Picture } from 'next-img'
-import avatar from './images/profile.jpg?sizes=108,144'
+import avatar from '../public/images/profile.jpg?sizes=108,144'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
